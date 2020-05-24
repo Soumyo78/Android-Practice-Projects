@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Tip Calculator</string>
     <string name="bill">Enter Bill Amount</string>
-    <string name="total_500_tip_50">Total Amount: ₹0\nTip Amount: ₹0</string>
+    <string name="total_500_tip_50">Total Amount: ₹0\nTip Amount: ₹0\nSplitted Amount: ₹0</string>
     <string name="calculate">Calculate</string>
     <string name="_10">10 %</string>
     <string name="tip_percent">Tip Percent</string>
+    <string name="no_of_people">No. of People</string>
+    <string name="_2">2</string>
 </resources>

@@ -12,9 +12,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Creating seekbar functionality
+
+        // For Tip Percent
         seekBarTipPercent.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 seekbarPercentText.text = progress.toString()+" %"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
+        // For No of People
+        seekBarNoOfPeople.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                seekbarNoOfPeopleText.text = progress.toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -40,8 +55,17 @@ class MainActivity : AppCompatActivity() {
             // Calculating total payment
             var totalPayment = billAmount + tipAmount
 
+            // Adding no of people
+            var noOfPeople = seekBarNoOfPeople.progress
+
+            // Calculating splitted amount
+            var splittedAmount = totalPayment / noOfPeople
+
             // Display the result
-            totalPaymentText.text = "Total Amount: ₹"+totalPayment+"\nTip Amount: ₹"+tipAmount
+            // totalPaymentText.text = "Total Amount: ₹"+totalPayment+"\nTip Amount: ₹"+tipAmount+"\nSplitted Amount: ₹"+splittedAmount // This is method 1 ( By using concatenating )
+            totalPaymentText.text = "Total Amount: ₹${totalPayment}\nTip Amount: ₹${tipAmount}\nSplitted Amount: ₹${splittedAmount}" // This is method 2 ( By using placeholder )
+            // We have to use dollar sign ($) in order to use placeholder
+
         }
 
     }

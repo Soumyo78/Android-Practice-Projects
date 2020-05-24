@@ -26,9 +26,9 @@
         android:layout_width="210dp"
         android:layout_height="52dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="101dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
@@ -58,6 +58,7 @@
         android:id="@+id/tipPercentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="48dp"
         android:text="@string/tip_percent"
         android:textAllCaps="true"
@@ -66,13 +67,14 @@
         app:layout_constraintBottom_toTopOf="@+id/seekBarTipPercent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBillAmount" />
 
     <SeekBar
         android:id="@+id/seekBarTipPercent"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:max="50"
         android:progress="10"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +92,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/seekBarTipPercent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/seekBarTipPercent"
         app:layout_constraintTop_toTopOf="@+id/seekBarTipPercent"
         app:layout_constraintVertical_bias="0.0" />
@@ -112,5 +114,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/noOfPeopleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/no_of_people"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarTipPercent" />
+
+    <SeekBar
+        android:id="@+id/seekBarNoOfPeople"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="57dp"
+        android:max="25"
+        android:progress="2"
+        app:layout_constraintBottom_toTopOf="@+id/calculateBtn"
+        app:layout_constraintEnd_toStartOf="@+id/seekbarNoOfPeopleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noOfPeopleText" />
+
+    <TextView
+        android:id="@+id/seekbarNoOfPeopleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="96dp"
+        android:text="@string/_2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBarNoOfPeople"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBarNoOfPeople"
+        app:layout_constraintTop_toTopOf="@+id/seekBarNoOfPeople" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
