@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         0
         )
 
-        // Setting adapter view
+        // Setting adapter view to the listview
         listViewNotes.adapter = listAdapter
     }
 
