@@ -14,9 +14,10 @@
         android:layout_marginTop="670dp"
         android:clickable="true"
         android:focusable="true"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="@+id/listViewNotes"
         app:layout_constraintTop_toTopOf="@+id/listViewNotes"
-        app:srcCompat="@android:drawable/ic_input_add"
+        app:srcCompat="@drawable/ic_add_white_24dp"
         tools:layout_conversion_absoluteHeight="0dp"
         tools:layout_conversion_absoluteWidth="0dp" />
 

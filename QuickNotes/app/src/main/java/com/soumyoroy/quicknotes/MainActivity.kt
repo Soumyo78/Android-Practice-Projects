@@ -1,5 +1,6 @@
 package com.soumyoroy.quicknotes
 
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Open the Note Details Activity
+        fabAtNote.setOnClickListener{
+            val intent = Intent(this, NoteDetails::class.java)
+            startActivity(intent)
+        }
 
         // Creating data source
         var objToCreateDB = QuickNotesSQLiteOpenHelper(this) // Creating database and table
