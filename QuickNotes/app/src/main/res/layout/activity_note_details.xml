@@ -8,25 +8,25 @@
 
     <EditText
         android:id="@+id/editTextTitle"
-        android:layout_width="411dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/title"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextDescription"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="593dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="350dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/description"
