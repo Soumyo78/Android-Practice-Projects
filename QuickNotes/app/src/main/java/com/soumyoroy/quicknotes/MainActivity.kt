@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     var db:SQLiteDatabase?= null
     var cursor:Cursor? = null
 
+    // Calling onCreate method
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,24 +24,30 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
         // Creating data source
         var objToCreateDB = QuickNotesSQLiteOpenHelper(this) // Creating database and table
         db = objToCreateDB.readableDatabase // Accessing the database (readable only)
 
         // Defining cursor
         cursor = db!!.query("notes", arrayOf("_id", "title"), // Reading data
-        null, null, null, null, null )
+            null, null, null, null, null )
 
         // Creating adapter
         val listAdapter = SimpleCursorAdapter(this, android.R.layout.simple_list_item_1,
-        cursor,
-        arrayOf("title"),
-        intArrayOf(android.R.id.text1),
-        0
+            cursor,
+            arrayOf("title"),
+            intArrayOf(android.R.id.text1),
+            0
         )
 
         // Setting adapter view to the listview
         listViewNotes.adapter = listAdapter
+
     }
 
     // Overriding onDestroy() method to destroy unused activities when another activities will be opened

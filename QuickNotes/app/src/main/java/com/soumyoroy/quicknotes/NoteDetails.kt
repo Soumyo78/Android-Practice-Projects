@@ -19,7 +19,7 @@ class NoteDetails : AppCompatActivity() {
         setContentView(R.layout.activity_note_details)
 
         val quickNotesDatabaseHelper = QuickNotesSQLiteOpenHelper(this)
-        db = quickNotesDatabaseHelper.writableDatabase
+        db = quickNotesDatabaseHelper.writableDatabase // Creating a writable connection
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
