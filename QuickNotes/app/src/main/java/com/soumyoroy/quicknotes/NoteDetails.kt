@@ -49,7 +49,7 @@ class NoteDetails : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         // Saving a note
-        if (item!!.itemId == R.id.save_note){
+        if (item.itemId == R.id.save_note){
 
             // Inserting new notes
             val newNoteValues = ContentValues()
@@ -71,7 +71,7 @@ class NoteDetails : AppCompatActivity() {
         }
 
         // Deleting an existing note
-        else if (item!!.itemId == R.id.delete_note){
+        else if (item.itemId == R.id.delete_note){
             deleteNote()
         }
 
@@ -82,7 +82,7 @@ class NoteDetails : AppCompatActivity() {
     private fun deleteNote(){
 
         // Display Alert Dialog Message Before Deleting a Note
-        var dialog:AlertDialog
+        val dialog:AlertDialog
         val builder = AlertDialog.Builder(this)
 
         // Setting a title for alert dialog
@@ -112,7 +112,7 @@ class NoteDetails : AppCompatActivity() {
             db!!.delete("notes", "_id=?", arrayOf(noteId.toString()))
             Toast.makeText(this, "Note Deleted Successfully", Toast.LENGTH_SHORT).show()
 
-            // Closing NOte Details Activity
+            // Closing Note Details Activity
             finish()
         }
     }
@@ -148,6 +148,5 @@ class NoteDetails : AppCompatActivity() {
         super.onDestroy()
 
         db!!.close()
-        cursor!!.close()
     }
 }
