@@ -20,12 +20,24 @@ class MainActivity : AppCompatActivity() {
 
         // Open the Note Details Activity
         fabAtNote.setOnClickListener{
-            val intent = Intent(this, NoteDetails::class.java)
-            startActivity(intent)
+            openNoteDetailsActivity(0) // noteId = 0 means user clicked on FAB
+        }
+
+        // Click Listener for listview
+        listViewNotes.setOnItemClickListener { parent, view, position, id ->
+           openNoteDetailsActivity(id)
         }
 
     }
 
+    // Open Note Details Activity Method
+    fun openNoteDetailsActivity(noteId:Long){
+        val intent = Intent(this, NoteDetails::class.java)
+        intent.putExtra("NOTE_ID", noteId)
+        startActivity(intent)
+    }
+
+    // Calling onStart method
     override fun onStart() {
         super.onStart()
 

@@ -1,6 +1,7 @@
 package com.soumyoroy.quicknotes
 
 import android.content.ContentValues
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_note_details.*
 class NoteDetails : AppCompatActivity() {
 
     var db:SQLiteDatabase? = null
+    var noteId:Int = 0
+    var cursor:Cursor? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +23,25 @@ class NoteDetails : AppCompatActivity() {
 
         val quickNotesDatabaseHelper = QuickNotesSQLiteOpenHelper(this)
         db = quickNotesDatabaseHelper.writableDatabase // Creating a writable connection
+
+        noteId = intent.extras!!.get("NOTE_ID").toString().toInt()
+
+        // Reading a Note title and description that its _id is equal to noteId
+        if (noteId != 0){
+            cursor = db!!.query(
+                "notes",
+                arrayOf("TITLE", "DESCRIPTION"),
+                "_id=?",
+                arrayOf(noteId.toString()),
+                null, null, null
+            )
+            // Using moveToFirst method to process the cursor
+            if (cursor!!.moveToFirst()){
+                editTextTitle.setText(cursor!!.getString(0))
+                editTextDescription.setText(cursor!!.getString(1))
+            }
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
