@@ -43,7 +43,6 @@ class NoteDetails : AppCompatActivity() {
                 editTextDescription.setText(cursor!!.getString(1))
             }
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
