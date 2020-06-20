@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
 
         // Setting adapter view to the listview
         listViewNotes.adapter = listAdapter
-
     }
 
     // Overriding onDestroy() method to destroy unused activities when another activities will be opened
