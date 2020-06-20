@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Open Note Details Activity Method
-    fun openNoteDetailsActivity(noteId:Long){
+    private fun openNoteDetailsActivity(noteId:Long){
         val intent = Intent(this, NoteDetails::class.java)
         intent.putExtra("NOTE_ID", noteId)
         startActivity(intent)

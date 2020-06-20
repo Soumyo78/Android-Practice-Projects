@@ -1,6 +1,8 @@
 package com.soumyoroy.quicknotes
 
+import android.app.AlertDialog
 import android.content.ContentValues
+import android.content.DialogInterface
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
@@ -46,33 +48,95 @@ class NoteDetails : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
+        // Saving a note
         if (item!!.itemId == R.id.save_note){
 
             // Inserting new notes
             val newNoteValues = ContentValues()
 
             // Checking the title is empty or not
-            if (editTextTitle.text.isEmpty()){
+            if (editTextTitle.text.isEmpty()) {
                 newNoteValues.put("TITLE", "Untitled")
-            }
-            else{
+            } else {
                 newNoteValues.put("TITLE", editTextTitle.text.toString())
             }
 
             newNoteValues.put("DESCRIPTION", editTextDescription.text.toString())
 
-            db!!.insert("notes", null, newNoteValues)
-            Toast.makeText(this, "Note saved Successfully", Toast.LENGTH_SHORT).show()
+            // Updating a note
+            if (noteId == 0)
+                insertNote(newNoteValues)
+            else
+                updateNote(newNoteValues)
+        }
 
-            // Clearing the edit texts
-            editTextTitle.setText("")
-            editTextDescription.setText("")
-
-            // Shifting the focus to editTextTitle after clearing
-            editTextTitle.requestFocus()
+        // Deleting an existing note
+        else if (item!!.itemId == R.id.delete_note){
+            deleteNote()
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    // Creating Delete Note Function
+    private fun deleteNote(){
+
+        // Display Alert Dialog Message Before Deleting a Note
+        var dialog:AlertDialog
+        val builder = AlertDialog.Builder(this)
+
+        // Setting a title for alert dialog
+        builder.setTitle("Deleting Note")
+
+        // Setting a message for alert dialog
+        builder.setMessage("Are You sure you want to delete '${editTextTitle.text}' ?")
+
+        // Setting alert dialog buttons
+
+        // Setting positive button (Yes)
+        builder.setPositiveButton("YES", dialogClickListener)
+
+        // Setting neutral button (Cancel)
+        builder.setNeutralButton("CANCEL", dialogClickListener)
+
+        // Initializing alert dialog by builder object
+        dialog = builder.create()
+
+        // Displaying the Dialog
+        dialog.show()
+    }
+
+    // Creating YES Alert click listener method
+    private val dialogClickListener = DialogInterface.OnClickListener { _, which ->
+        if (which == DialogInterface.BUTTON_POSITIVE){
+            db!!.delete("notes", "_id=?", arrayOf(noteId.toString()))
+            Toast.makeText(this, "Note Deleted Successfully", Toast.LENGTH_SHORT).show()
+
+            // Closing NOte Details Activity
+            finish()
+        }
+    }
+
+
+    // Creating Update Note Function
+    private fun updateNote(noteValues:ContentValues){
+
+        db!!.update("notes", noteValues, "_id=?", arrayOf(noteId.toString()))
+        Toast.makeText(this, "Note Updated Successfully", Toast.LENGTH_SHORT).show()
+    }
+
+    // Creating Insert Note Function
+    private fun insertNote(newNoteValues:ContentValues) {
+
+        db!!.insert("notes", null, newNoteValues)
+        Toast.makeText(this, "Note saved Successfully", Toast.LENGTH_SHORT).show()
+
+        // Clearing the edit texts
+        editTextTitle.setText("")
+        editTextDescription.setText("")
+
+        // Shifting the focus to editTextTitle after clearing
+        editTextTitle.requestFocus()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -84,5 +148,6 @@ class NoteDetails : AppCompatActivity() {
         super.onDestroy()
 
         db!!.close()
+        cursor!!.close()
     }
 }
