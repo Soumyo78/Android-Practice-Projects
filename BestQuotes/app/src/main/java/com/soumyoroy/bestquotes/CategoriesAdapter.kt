@@ -13,11 +13,14 @@ class CategoriesAdapter(val context:Context, val categories:List<Category>): Rec
     // This class will be used to either create or recycle views
     inner class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
 
-        // Creating Category Image and Name Objects
+        // Finding and extracting imageview and textview inside item_view
         val categoryImage = itemView!!.findViewById<ImageView>(R.id.imageViewCategoryImage)
         val categoryName = itemView!!.findViewById<TextView>(R.id.textViewCategoryName)
 
+        // This method is used to bind data
         fun bindData(category:Category, context:Context){
+
+            // Binding data to imageview and textview
             categoryImage.setImageResource(category.resourceId)
             categoryName.text = category.name
         }
@@ -26,7 +29,7 @@ class CategoriesAdapter(val context:Context, val categories:List<Category>): Rec
     // It will create new instance from cardview layout or recycle an existing one
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        // Finding and extracting imageview and textview inside item_view
+        // Creating view object
         val view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false)
         val myViewHolder = MyViewHolder(view)
 
@@ -38,7 +41,7 @@ class CategoriesAdapter(val context:Context, val categories:List<Category>): Rec
         return categories.count()
     }
 
-    // Binding data to imageview nad textview
+    // Binding data to imageview and textview
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder!!.bindData(categories[position], context)
     }
