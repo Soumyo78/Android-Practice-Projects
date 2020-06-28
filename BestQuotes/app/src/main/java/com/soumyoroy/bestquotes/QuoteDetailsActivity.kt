@@ -12,7 +12,9 @@ class QuoteDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quote_details)
 
+        // Getting key from putExtra method
         quoteCategoryId = intent.extras!!.get("QUOTE_CATEGORY_ID").toString().toInt()
+        // Showing toast message
         Toast.makeText(this, "You have clicked on ${quoteCategoryId.toString()}", Toast.LENGTH_SHORT).show()
     }
 }
