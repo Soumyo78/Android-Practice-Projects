@@ -8,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CategoriesAdapter(val context:Context, val categories:List<Category>): RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
+class CategoriesAdapter(val context:Context, val categories:List<Category>, val onItemClick:(Int)->Unit): RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
     // This class will be used to either create or recycle views
-    inner class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    inner class MyViewHolder(itemView: View, val onItemClick: (Int) -> Unit):RecyclerView.ViewHolder(itemView){
 
         // Finding and extracting imageview and textview inside item_view
         val categoryImage = itemView!!.findViewById<ImageView>(R.id.imageViewCategoryImage)
@@ -23,6 +23,11 @@ class CategoriesAdapter(val context:Context, val categories:List<Category>): Rec
             // Binding data to imageview and textview
             categoryImage.setImageResource(category.resourceId)
             categoryName.text = category.name
+
+            // Creating a click listener for recycler view
+            itemView.setOnClickListener {
+                onItemClick(category.id)
+            }
         }
     }
 
@@ -31,7 +36,7 @@ class CategoriesAdapter(val context:Context, val categories:List<Category>): Rec
 
         // Creating view object
         val view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false)
-        val myViewHolder = MyViewHolder(view)
+        val myViewHolder = MyViewHolder(view, onItemClick)
 
         return myViewHolder
     }
