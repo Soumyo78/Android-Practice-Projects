@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/leftDoubleQuoteTextView"
+            android:layout_width="27dp"
+            android:layout_height="41dp"
+            android:fontFamily="serif"
+            android:text="@string/u201c"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="50sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toTopOf="@+id/quoteTextView" />
+
+        <TextView
+            android:id="@+id/quoteTextView"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is a sample text.\nHere all quotes will appear.\nHope every thing goes well" />
+
+        <TextView
+            android:id="@+id/rightDoubleQuoteTextView"
+            android:layout_width="30dp"
+            android:layout_height="44dp"
+            android:fontFamily="serif"
+            android:text="@string/u201d"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="50sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/quoteTextView"
+            app:layout_constraintStart_toStartOf="@+id/rightGuideline" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

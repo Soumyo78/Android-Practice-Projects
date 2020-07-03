@@ -31,7 +31,6 @@
             android:fontFamily="cursive"
             android:gravity="center"
             android:text="@string/textview"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="24sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

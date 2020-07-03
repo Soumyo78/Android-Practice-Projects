@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CategoriesAdapter(val context:Context, val categories:List<Category>, val onItemClick:(Int)->Unit): RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
-    // This class will be used to either create or recycle views
+    // This inner class will be used to either create or recycle views
     inner class MyViewHolder(itemView: View, val onItemClick: (Int) -> Unit):RecyclerView.ViewHolder(itemView){
 
         // Finding and extracting imageview and textview inside item_view
@@ -46,7 +46,7 @@ class CategoriesAdapter(val context:Context, val categories:List<Category>, val 
         return categories.count()
     }
 
-    // Binding data to imageview and textview
+   // Calling bindData() function for binding data
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder!!.bindData(categories[position], context)
     }

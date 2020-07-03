@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Best Quotes</string>
+    <string name="app_name">Bong Quotes</string>
     <string name="todo">TODO</string>
     <string name="textview">TextView</string>
+    <string name="u201c">“</string>
+    <string name="u201d">”</string>
 </resources>
