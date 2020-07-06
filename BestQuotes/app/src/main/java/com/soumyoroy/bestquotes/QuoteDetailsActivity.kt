@@ -23,8 +23,6 @@ class QuoteDetailsActivity : AppCompatActivity() {
 
         // Getting key from putExtra method
         quoteCategoryId = intent.extras!!.get("QUOTE_CATEGORY_ID").toString().toInt()
-        // Showing toast message
-        Toast.makeText(this, "You have clicked on $quoteCategoryId", Toast.LENGTH_SHORT).show()
 
         // Reading Data from database
         val bestQuotesDatabaseHelper = BestQuotesSQLiteOpenHelper(this)
